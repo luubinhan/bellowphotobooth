@@ -9,9 +9,9 @@ module.exports = (grunt) ->
         files: ['src/**/*.html']
         tasks: ['htmlbuild:main']
       css:
-        files: ['dist/*.css']
+        files: ['docs/*.css']
       scripts:
-        files: ['dist/*.js']        
+        files: ['docs/*.js']        
     htmlbuild:
       options:            
         sections:
@@ -23,24 +23,24 @@ module.exports = (grunt) ->
         relative: true
         beautify: true
       main:
-        dest: 'dist/'
+        dest: 'docs/'
         src: ['**/*.html','!partials/*.html']
         expand: true
         cwd: 'src'
     clean:
-      build: ['dist/*.html','!css/**','!js/**']    
+      build: ['docs/*.html','!css/**','!js/**']    
       options:
         force: true
     copy:
       build:
-        dest: 'dist/'
+        dest: 'docs/'
         src: ['**', '!data.json']
         expand: true
-        cwd: 'dist/'
+        cwd: 'docs/'
     connect:
       server:
         options:
-          base: 'dist'
+          base: 'docs'
           hostname: '<%= serverConf.hostname %>'
           port: '<%= serverConf.port %>'
           livereload: true
